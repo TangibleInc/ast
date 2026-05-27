@@ -1,0 +1,25 @@
+{
+  "name": "tangible/ast",
+  "description": "Polymorphic AST node primitive with JSON round-trip and pluggable type registry.",
+  "type": "library",
+  "license": "GPL-2.0-only",
+  "autoload": {
+    "psr-4": {
+      "Tangible\\Ast\\": "./src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tangible\\Ast\\Tests\\": "./tests"
+    }
+  },
+  "authors": [
+    {
+      "name": "Team Tangible"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=8.2"
+  }
+}
