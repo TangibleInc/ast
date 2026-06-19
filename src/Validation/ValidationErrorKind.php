@@ -11,4 +11,5 @@ enum ValidationErrorKind: string {
     case InvalidChildType = 'invalid_child_type';
     case DuplicateIdentifier = 'duplicate_identifier';
     case InvalidIdentifier = 'invalid_identifier';
+    case ReferenceIntegrity = 'reference_integrity';
 }
