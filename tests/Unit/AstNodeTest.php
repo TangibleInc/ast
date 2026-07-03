@@ -64,6 +64,23 @@ final class AstNodeTest extends TestCase {
         self::assertInstanceOf(ContainerNode::class, $parsed);
     }
 
+    public function test_json_encode_matches_toJson(): void {
+        $node = new ContainerNode(children: [new LeafNode(value: 'a')]);
+
+        self::assertSame($node->toJson(), json_encode($node));
+    }
+
+    public function test_json_encode_of_mixed_node_and_raw_array_structure(): void {
+        // A json column may hold nodes (post-update) or raw arrays (hydrated);
+        // both must encode to the same wire shape.
+        $mixed = [new LeafNode(value: 'a'), ['type' => 'leaf', 'value' => 'b']];
+
+        self::assertSame(
+            '[{"type":"leaf","value":"a"},{"type":"leaf","value":"b"}]',
+            json_encode($mixed),
+        );
+    }
+
     public function test_children_dispatch_uses_subclass_registry_via_LSB(): void {
         // ContainerNode::fromData calls `static::parseChildren`, which calls
         // `static::fromJson` per child. LSB must resolve to FixtureAstNode's

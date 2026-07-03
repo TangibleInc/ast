@@ -18,7 +18,7 @@ use Tangible\Ast\Exceptions\UnknownNodeType;
  * registry (closed set) or applies a filter hook (open set), and concrete node
  * classes extend from there.
  */
-abstract class AstNode {
+abstract class AstNode implements \JsonSerializable {
     // -----------------------------------------------------------------
     // Subclass contract
     // -----------------------------------------------------------------
@@ -52,6 +52,15 @@ abstract class AstNode {
 
     final public function toJson(): string {
         return json_encode($this->toStdClass(), \JSON_THROW_ON_ERROR);
+    }
+
+    /**
+     * Nodes json_encode to the same shape they parse from, so structures
+     * that mix nodes and raw arrays (or nest nodes inside json columns)
+     * serialize correctly without an explicit toJson() pass.
+     */
+    final public function jsonSerialize(): \stdClass {
+        return $this->toStdClass();
     }
 
     /**
