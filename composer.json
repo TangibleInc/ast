@@ -21,5 +21,10 @@
   "minimum-stability": "stable",
   "require": {
     "php": ">=8.2"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-trunk": "0.1.x-dev"
+    }
   }
 }
