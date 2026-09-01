@@ -1,7 +1,7 @@
 {
   "name": "tangible/ast",
   "description": "Polymorphic AST node primitive with JSON round-trip and pluggable type registry.",
-  "type": "library",
+  "type": "jetpack-library",
   "license": "GPL-2.0-only",
   "autoload": {
     "psr-4": {
@@ -25,6 +25,7 @@
   "extra": {
     "branch-alias": {
       "dev-trunk": "0.1.x-dev"
-    }
+    },
+    "textdomain": "tangible-ast"
   }
 }
